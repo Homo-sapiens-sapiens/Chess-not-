@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Shoot_chose : MonoBehaviour
 {
+    [SerializeField] protected GameObject cam;
     void Update()
     {
-        if ((Input.touchCount > 0) && (Input.touches[0].phase == TouchPhase.Began))
+        if (Input.GetMouseButton(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);
+            Vector3 rayStartPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(rayStartPosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                print("shooted");
                 if (hit.collider != null)
                 {
-                    hit.collider.GetComponent<Pawn>().Choose_move();
+                    print("attacked");
+                    hit.collider.GetComponent<Queen>().Choose_move();
                 }
             }
         }

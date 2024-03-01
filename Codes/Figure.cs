@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Figure : MonoBehaviour
 {
-    float cell = 0.3f;
     [SerializeField] bool isWhite;
+
     virtual public void Choose_move()
     {
 
@@ -13,5 +13,8 @@ public class Figure : MonoBehaviour
     protected void Move()
     {
 
+    }
+    void Start()
+    {
     }
 }
